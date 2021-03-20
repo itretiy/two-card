@@ -13,7 +13,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier:write": "prettier --write '**/*.{ts,tsx,js,jsx,css,json,md}'"
+    "prettier:write": "prettier --write '**/*.{ts,tsx,js,jsx,css,json,md}'",
+    "lint": "tsc --noEmit && eslint --ext .ts,.tsx,.js,.jsx .",
+    "lint:fix": "tsc --noEmit && eslint --fix --ext .ts,.tsx,.js,.jsx ."
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -34,6 +36,23 @@
     "@types/jest": "^26.0.21",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.2",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "=4",
+    "lint-staged": ">=10",
     "prettier": "2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": "eslint --cache --fix",
+    "*.{ts,tsx,js,jsx,css,json,md}": "prettier --write"
   }
 }
