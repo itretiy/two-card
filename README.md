@@ -1,4 +1,3 @@
-
 <div style="background: #308b5a; padding: 10px; color: #fef72d">
 
 # Test Project
@@ -23,4 +22,5 @@ Create a mini game where clicking the button generate several hand cards. Please
 ### Helpers
 
 #### example card
+
 <img src="http://h3h.net/images/cards/diamond_9.svg" />

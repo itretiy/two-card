@@ -4,10 +4,10 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-
       <h1>Instructions:</h1>
       <p>
-        Create a mini game where clicking the button generates several hand cards.<br />
+        Create a mini game where clicking the button generates several hand cards.
+        <br />
         Please be sure to fork this repo and update the readme file with your notes.
       </p>
       <ul>
@@ -33,11 +33,8 @@ function App() {
 
       <div>
         <h4>Deal Button:</h4>
-        <button className="play-button">
-          Deal Cards
-        </button>
+        <button className="play-button">Deal Cards</button>
       </div>
-
     </div>
   );
 }
