@@ -7,7 +7,7 @@ export default class Deck {
 
   constructor() {
     Object.keys(Suit).forEach((suit) => {
-      // NOTE: exclude reverse mappings for Rank enum
+      // NOTE: exclude reverse mappings in the Rank enum
       Object.keys(Rank)
         .filter((value) => isNaN(parseInt(value, 10)))
         .forEach((rank) => {
