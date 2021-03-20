@@ -22,6 +22,11 @@ module.exports = {
     project: './tsconfig.json',
   },
   plugins: ['react', '@typescript-eslint'],
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
