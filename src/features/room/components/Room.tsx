@@ -1,7 +1,39 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { Player as PlayerType } from 'features/room/types';
+import Button from 'components/Button';
 import Player from './Player';
+
+const RoomHeader = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+`;
+
+const ButtonsPanel = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2em;
+`;
+
+const RoomButton = styled(Button)`
+  width: 270px;
+  margin-right: 1em;
+`;
+
+const RoomInfo = styled.div`
+  font-size: 24px;
+  text-shadow: 1px 2px #444;
+`;
+
+const PlayersPanel = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export interface RoomProps {
   name: string;
@@ -21,30 +53,25 @@ export default function Game({
   onRemovePlayer,
 }: RoomProps) {
   return (
-    <div>
-      <div>room: {name}</div>
-      <div>winner: {winner?.name || 'none'}</div>
-      <div>
-        players:{' '}
+    <>
+      <RoomHeader>
+        <RoomInfo>Room: {name}</RoomInfo>
+      </RoomHeader>
+      <ButtonsPanel>
+        <RoomButton onClick={onDeal}>Deal cards</RoomButton>
+        <RoomButton onClick={onAddPlayer}>Add Player</RoomButton>
+        <RoomButton onClick={onRemovePlayer}>Remove Player</RoomButton>
+      </ButtonsPanel>
+      <PlayersPanel>
         {players.map((player) => (
-          <Player key={player.name} name={player.name} cards={player.cards} />
+          <Player
+            name={player.name}
+            cards={player.cards}
+            isWinner={player.id === winner?.id}
+            key={player.name}
+          />
         ))}
-      </div>
-      <div>
-        <button onClick={onDeal} className="play-button">
-          Deal cards
-        </button>
-      </div>
-      <div>
-        <button onClick={onAddPlayer} className="play-button">
-          Add Player
-        </button>
-      </div>
-      <div>
-        <button onClick={onRemovePlayer} className="play-button">
-          Remove Player
-        </button>
-      </div>
-    </div>
+      </PlayersPanel>
+    </>
   );
 }

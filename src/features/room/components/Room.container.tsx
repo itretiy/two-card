@@ -6,10 +6,15 @@ import { playNewGame, addPlayer, removePlayer } from 'features/room/roomSlice';
 import Room from './Room';
 
 export default function RoomContainer() {
+  const name = useTypedSelector(({ room }) => room.name);
+  const players = useTypedSelector(({ room }) => room.players);
+  const winner = useTypedSelector(({ room }) => room.winner);
+
   const dispatch = useDispatch<RootDispatch>();
   useEffect(() => {
     dispatch(playNewGame());
   }, [dispatch]);
+
   const handleDeal = useCallback(() => {
     dispatch(playNewGame());
   }, [dispatch]);
@@ -19,10 +24,6 @@ export default function RoomContainer() {
   const handleRemovePlayer = useCallback(() => {
     dispatch(removePlayer());
   }, [dispatch]);
-
-  const name = useTypedSelector(({ room }) => room.name);
-  const players = useTypedSelector(({ room }) => room.players);
-  const winner = useTypedSelector(({ room }) => room.winner);
 
   return (
     <Room
