@@ -1,9 +1,7 @@
-// TODO check
-// import { Suit, Rank } from 'models/Card';
-
 export interface Card {
   suit: string;
   rank: string;
+  hasPair?: boolean;
 }
 
 export interface Player {

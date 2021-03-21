@@ -23,7 +23,7 @@ export default function Game({
   return (
     <div>
       <div>room: {name}</div>
-      {winner && <div>winner: {winner.name}</div>}
+      <div>winner: {winner?.name || 'none'}</div>
       <div>
         players:{' '}
         {players.map((player) => (

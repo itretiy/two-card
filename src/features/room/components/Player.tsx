@@ -1,10 +1,11 @@
 import React from 'react';
 
-import { Card } from 'features/room/types';
+import { Card as CardType } from 'features/room/types';
+import Card from './Card';
 
 export interface PlayerProps {
   name: string;
-  cards: Card[];
+  cards: CardType[];
 }
 
 export default function Player({ name, cards = [] }: PlayerProps) {
@@ -12,11 +13,13 @@ export default function Player({ name, cards = [] }: PlayerProps) {
     <div>
       <div>player: {name}</div>
       <div>
-        cards:{' '}
         {cards.map((card) => (
-          <span key={`${card.rank}-${card.suit}`}>
-            {card.rank}-{card.suit}{' '}
-          </span>
+          <Card
+            suit={card.suit}
+            rank={card.rank}
+            hasPair={card.hasPair}
+            key={`${card.rank}-${card.suit}`}
+          />
         ))}
       </div>
     </div>

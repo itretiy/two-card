@@ -17,7 +17,7 @@ const initialState: RoomState = {
 };
 
 const { reducer, actions } = createSlice({
-  name: 'game',
+  name: 'room',
   initialState,
   reducers: {
     createRoom(state, action: PayloadAction<Room>) {

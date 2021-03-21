@@ -1,7 +1,9 @@
 import { Room, Player, Card } from 'models';
-import { getPairsCount } from './gameService.utils';
+import { hasPair, getPairsCount } from './gameService.utils';
 
-export type CardData = Pick<Card, 'suit' | 'rank'>;
+export type CardData = Pick<Card, 'suit' | 'rank'> & {
+  hasPair?: boolean;
+};
 export type PlayerData = Pick<Player, 'id' | 'name'> & {
   cards: CardData[];
 };
@@ -53,20 +55,12 @@ class GameService {
       : undefined;
   }
 
-  // getWinner() {
-  //   const { players } = this.room
-  //   const pairs = players.map((player) => getPairsCount(player.cards));
-
-  //   let maxPairsCount = 0;
-  //   for(let i = 0; i < pairs.length; i++) {
-  //     if (pairs[i] !== 0 && pairs[i] )
-  //   }
-
-  //   return;
-  // }
-
   private mapCards(cards: Card[] = []): CardData[] {
-    return cards.map(({ suit, rank }) => ({ suit, rank }));
+    return cards.map((card) => ({
+      suit: card.suit,
+      rank: card.rank,
+      hasPair: hasPair(card, cards),
+    }));
   }
 
   private mapPlayers(players: Player[] = []): PlayerData[] {
