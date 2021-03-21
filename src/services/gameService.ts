@@ -1,4 +1,6 @@
-import { Card as CardModel, Player as PlayerModel, Room as RoomModel } from 'models';
+import CardModel from 'models/Card';
+import PlayerModel from 'models/Player';
+import RoomModel from 'models/Room';
 import { hasPair, getPairsCount } from './gameService.utils';
 
 class GameService {
@@ -33,7 +35,7 @@ class GameService {
 
   getWinner() {
     const { players } = this.room;
-    const ranks = players
+    const sortedByRankDesc = players
       .map((player) => ({
         player,
         pairsCount: getPairsCount(player.cards),
@@ -42,8 +44,9 @@ class GameService {
         ({ pairsCount: pairsCountA }, { pairsCount: pairsCountB }) => pairsCountB - pairsCountA,
       );
 
-    return ranks[0]?.pairsCount !== 0 && ranks[0]?.pairsCount !== ranks[1]?.pairsCount
-      ? this.mapPlayer(ranks[0].player)
+    return sortedByRankDesc[0]?.pairsCount !== 0 &&
+      sortedByRankDesc[0]?.pairsCount !== sortedByRankDesc[1]?.pairsCount
+      ? this.mapPlayer(sortedByRankDesc[0].player)
       : undefined;
   }
 

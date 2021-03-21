@@ -1,4 +1,6 @@
 import gameService from './gameService';
+import Room from 'models/Room';
+import Deck from 'models/Deck';
 
 describe('gameService', () => {
   describe('.createRoom', () => {
@@ -17,7 +19,7 @@ describe('gameService', () => {
       expect(roomA.id).not.toEqual(roomB.id);
     });
 
-    it('should create new room players without cards', () => {
+    it('should have players without cards', () => {
       const room = gameService.createRoom();
 
       room.players.forEach((player) => {
@@ -27,12 +29,31 @@ describe('gameService', () => {
   });
 
   describe('.deal', () => {
-    it('should draw 7 cards for each player', () => {
-      gameService.createRoom();
+    it('should call Room.prototype.deal()', () => {
+      const dealSpy = jest.spyOn(Room.prototype, 'deal');
+
+      gameService.deal();
+
+      expect(dealSpy).toBeCalled();
+
+      dealSpy.mockRestore();
+    });
+
+    it('should draw 7 cards for each player from shuffled deck', () => {
+      const shuffleSpy = jest.spyOn(Deck.prototype, 'shuffle');
+      const drawSpy = jest.spyOn(Deck.prototype, 'draw');
+
       const [playerOne, playerTwo] = gameService.deal();
 
+      expect(shuffleSpy).toBeCalled();
+      expect(drawSpy).toBeCalledTimes(2);
       expect(playerOne.cards).toHaveLength(7);
       expect(playerTwo.cards).toHaveLength(7);
+
+      shuffleSpy.mockRestore();
+      drawSpy.mockRestore();
     });
   });
+
+  // TODO test for .winner .addPlayer .getPlayer
 });

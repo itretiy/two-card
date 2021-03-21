@@ -18,6 +18,21 @@ describe('gameService.utils', () => {
       expect(hasPair(ace, hand)).toBeFalsy();
     });
 
+    it(`should return false for Ace if hand has only single Ace`, () => {
+      const ace = new Card(Suit.Clubs, Rank.Ace);
+      const hand = [
+        new Card(Suit.Clubs, Rank.Ace),
+        new Card(Suit.Clubs, Rank.Two),
+        new Card(Suit.Clubs, Rank.Three),
+        new Card(Suit.Clubs, Rank.Four),
+        new Card(Suit.Clubs, Rank.Five),
+        new Card(Suit.Clubs, Rank.Six),
+        new Card(Suit.Clubs, Rank.Seven),
+      ];
+
+      expect(hasPair(ace, hand)).toBeFalsy();
+    });
+
     it(`should return true for Ace if hand has two Aces`, () => {
       const ace = new Card(Suit.Clubs, Rank.Ace);
       const hand = [
@@ -66,23 +81,23 @@ describe('gameService.utils', () => {
           new Card(Suit.Diamonds, Rank.Ace),
           new Card(Suit.Hearts, Rank.Ace),
           new Card(Suit.Clubs, Rank.Two),
-          new Card(Suit.Clubs, Rank.Three),
+          new Card(Suit.Spades, Rank.Two),
           new Card(Suit.Clubs, Rank.Four),
           new Card(Suit.Clubs, Rank.Five),
         ],
-        1,
+        2,
       ],
       [
         [
           new Card(Suit.Clubs, Rank.Ace),
           new Card(Suit.Diamonds, Rank.Ace),
           new Card(Suit.Hearts, Rank.Ace),
-          new Card(Suit.Spades, Rank.Ace),
           new Card(Suit.Clubs, Rank.Two),
+          new Card(Suit.Spades, Rank.Ace),
           new Card(Suit.Clubs, Rank.Three),
-          new Card(Suit.Clubs, Rank.Four),
+          new Card(Suit.Diamonds, Rank.Three),
         ],
-        2,
+        3,
       ],
     ];
 

@@ -16,6 +16,8 @@ export const getPairs = (cards: Card[] = []): [Card, Card][] => {
   while ((current = sorted.pop()) !== undefined && (next = sorted.pop()) !== undefined) {
     if (current.rank === next.rank) {
       pairs.push([current, next]);
+    } else {
+      sorted.push(next);
     }
   }
 

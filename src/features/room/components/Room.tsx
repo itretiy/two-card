@@ -11,7 +11,7 @@ const RoomHeader = styled.div`
   margin-bottom: 2em;
 `;
 
-const ButtonsPanel = styled.div`
+const Buttons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@ const RoomInfo = styled.div`
   text-shadow: 1px 2px #444;
 `;
 
-const PlayersPanel = styled.div`
+const Players = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -60,7 +60,7 @@ export default function Game({
       <RoomHeader>
         <RoomInfo>Room: {name}</RoomInfo>
       </RoomHeader>
-      <ButtonsPanel>
+      <Buttons>
         <RoomButton onClick={onDeal}>Deal cards</RoomButton>
         <RoomButton onClick={onAddPlayer} disabled={!canAdd}>
           Add Player
@@ -68,8 +68,8 @@ export default function Game({
         <RoomButton onClick={onRemovePlayer} disabled={!canRemove}>
           Remove Player
         </RoomButton>
-      </ButtonsPanel>
-      <PlayersPanel>
+      </Buttons>
+      <Players>
         {players.map((player) => (
           <Player
             name={player.name}
@@ -78,7 +78,7 @@ export default function Game({
             key={player.name}
           />
         ))}
-      </PlayersPanel>
+      </Players>
     </>
   );
 }

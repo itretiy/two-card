@@ -1,7 +1,9 @@
 import { TypedUseSelectorHook } from 'react-redux';
 
 import store from 'store';
-import { Card as CardModel, Player as PlayerModel, Room as RoomModel } from 'models';
+import CardModel from 'models/Card';
+import PlayerModel from 'models/Player';
+import RoomModel from 'models/Room';
 
 declare global {
   // redux types
