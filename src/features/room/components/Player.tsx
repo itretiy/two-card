@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Card as CardType } from 'features/room/types';
 import Card from './Card';
 import CardBackSide from './CardBackSide';
 
@@ -21,7 +20,7 @@ const PlayerInfo = styled.div`
 `;
 export interface PlayerProps {
   name: string;
-  cards: CardType[];
+  cards: Card[];
   isWinner: boolean;
 }
 

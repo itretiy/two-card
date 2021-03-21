@@ -7,14 +7,9 @@ export default class Deck {
 
   constructor() {
     Object.keys(Suit).forEach((suit) => {
-      // NOTE: exclude reverse mappings in the Rank enum
-      Object.keys(Rank)
-        .filter((value) => isNaN(parseInt(value, 10)))
-        .forEach((rank) => {
-          this.cards.push(
-            new Card(Suit[suit as keyof typeof Suit], Rank[rank as keyof typeof Rank]),
-          );
-        });
+      Object.keys(Rank).forEach((rank) => {
+        this.cards.push(new Card(Suit[suit as keyof typeof Suit], Rank[rank as keyof typeof Rank]));
+      });
     });
   }
 

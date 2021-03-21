@@ -1,6 +1,4 @@
-import { CardData } from './gameService';
-
-export const hasPair = (card: CardData, cards: CardData[]) => {
+export const hasPair = (card: Card, cards: Card[]) => {
   const pairs = getPairs(cards);
 
   return !!pairs
@@ -8,10 +6,10 @@ export const hasPair = (card: CardData, cards: CardData[]) => {
     .find((cardInPair) => cardInPair.rank === card.rank && cardInPair.suit === card.suit);
 };
 
-export const getPairsCount = (cards: CardData[] = []) => getPairs(cards).length;
+export const getPairsCount = (cards: Card[] = []) => getPairs(cards).length;
 
-export const getPairs = (cards: CardData[] = []): [CardData, CardData][] => {
-  const pairs: [CardData, CardData][] = [];
+export const getPairs = (cards: Card[] = []): [Card, Card][] => {
+  const pairs: [Card, Card][] = [];
 
   const sorted = [...cards].sort((card, nextCard) => card.rank.localeCompare(nextCard.rank));
   let current, next;

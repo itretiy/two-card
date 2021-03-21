@@ -1,21 +1,11 @@
-import { Room, Player, Card } from 'models';
+import { Card as CardModel, Player as PlayerModel, Room as RoomModel } from 'models';
 import { hasPair, getPairsCount } from './gameService.utils';
 
-export type CardData = Pick<Card, 'suit' | 'rank'> & {
-  hasPair?: boolean;
-};
-export type PlayerData = Pick<Player, 'id' | 'name'> & {
-  cards: CardData[];
-};
-export type RoomData = Pick<Room, 'id' | 'name'> & {
-  players: PlayerData[];
-};
-
 class GameService {
-  private room: Room = new Room();
+  private room = new RoomModel();
 
   createRoom() {
-    this.room = new Room();
+    this.room = new RoomModel();
 
     return this.mapRoom(this.room);
   }
@@ -57,7 +47,7 @@ class GameService {
       : undefined;
   }
 
-  private mapCards(cards: Card[] = []): CardData[] {
+  private mapCards(cards: CardModel[] = []): Card[] {
     return cards.map((card) => ({
       suit: card.suit,
       rank: card.rank,
@@ -65,11 +55,11 @@ class GameService {
     }));
   }
 
-  private mapPlayers(players: Player[] = []): PlayerData[] {
+  private mapPlayers(players: PlayerModel[] = []): Player[] {
     return players.map((player) => this.mapPlayer(player));
   }
 
-  private mapPlayer(player: Player): PlayerData {
+  private mapPlayer(player: PlayerModel): Player {
     return {
       id: player.id,
       name: player.name,
@@ -77,7 +67,7 @@ class GameService {
     };
   }
 
-  private mapRoom(room: Room): RoomData {
+  private mapRoom(room: RoomModel): Room {
     return {
       id: room.id,
       name: room.name,

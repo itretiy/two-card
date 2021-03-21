@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Player as PlayerType } from 'features/room/types';
 import Button from 'components/Button';
 import Player from './Player';
 
@@ -37,8 +36,8 @@ const PlayersPanel = styled.div`
 
 export interface RoomProps {
   name: string;
-  players: PlayerType[];
-  winner?: PlayerType;
+  players: Player[];
+  winner?: Player;
   onDeal: () => void;
   canAdd: boolean;
   onAddPlayer: () => void;
