@@ -1,3 +1,9 @@
+import { TypedUseSelectorHook } from 'react-redux';
+import store from 'store';
+
 declare global {
-  // TODO put here global types as needed
+  type RootState = ReturnType<typeof store.getState>;
+  type RootDispatch = typeof store.dispatch;
+
+  type RootTypedUseSelectorHook = TypedUseSelectorHook<RootState>;
 }

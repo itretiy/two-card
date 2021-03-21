@@ -1,15 +1,14 @@
 import React, { useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { RootDispatch, useTypedSelector } from 'store';
 import environment from 'config/environment';
 import { playNewGame, addPlayer, removePlayer } from 'features/room/roomSlice';
 import Room from './Room';
 
 export default function RoomContainer() {
-  const name = useTypedSelector(({ room }) => room.name);
-  const players = useTypedSelector(({ room }) => room.players);
-  const winner = useTypedSelector(({ room }) => room.winner);
+  const name = (useSelector as RootTypedUseSelectorHook)(({ room }) => room.name);
+  const players = (useSelector as RootTypedUseSelectorHook)(({ room }) => room.players);
+  const winner = (useSelector as RootTypedUseSelectorHook)(({ room }) => room.winner);
 
   const dispatch = useDispatch<RootDispatch>();
   useEffect(() => {

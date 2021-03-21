@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { RootDispatch } from 'store';
+// import { RootDispatch } from 'store';
 import { Player, Room } from './types';
 import gameService from 'services/gameService';
 import { addHistory } from 'features/history/historySlice';
