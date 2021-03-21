@@ -1,3 +1,4 @@
 export default {
-  // TODO use env variables as needed
+  minPlayers: 2,
+  maxPlayers: 4,
 };

@@ -16,8 +16,14 @@ const ButtonStyled = styled.button`
     left: 4px;
     box-shadow: none;
   }
+
   &:focus {
     outline: none;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
   }
 `;
 

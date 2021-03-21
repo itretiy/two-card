@@ -66,13 +66,17 @@ export const playNewGame = () => (dispatch: RootDispatch) => {
 export const addPlayer = () => (dispatch: RootDispatch) => {
   const player = gameService.addPlayer();
 
-  dispatch(pushPlayer(player));
+  if (player) {
+    dispatch(pushPlayer(player));
+  }
 };
 
 export const removePlayer = () => (dispatch: RootDispatch) => {
-  gameService.removePlayer();
+  const removedPlayer = gameService.removePlayer();
 
-  dispatch(popPlayer());
+  if (removedPlayer) {
+    dispatch(popPlayer());
+  }
 };
 
 export default reducer;

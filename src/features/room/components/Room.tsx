@@ -40,7 +40,9 @@ export interface RoomProps {
   players: PlayerType[];
   winner?: PlayerType;
   onDeal: () => void;
+  canAdd: boolean;
   onAddPlayer: () => void;
+  canRemove: boolean;
   onRemovePlayer: () => void;
 }
 
@@ -49,7 +51,9 @@ export default function Game({
   players = [],
   winner,
   onDeal,
+  canAdd,
   onAddPlayer,
+  canRemove,
   onRemovePlayer,
 }: RoomProps) {
   return (
@@ -59,8 +63,12 @@ export default function Game({
       </RoomHeader>
       <ButtonsPanel>
         <RoomButton onClick={onDeal}>Deal cards</RoomButton>
-        <RoomButton onClick={onAddPlayer}>Add Player</RoomButton>
-        <RoomButton onClick={onRemovePlayer}>Remove Player</RoomButton>
+        <RoomButton onClick={onAddPlayer} disabled={!canAdd}>
+          Add Player
+        </RoomButton>
+        <RoomButton onClick={onRemovePlayer} disabled={!canRemove}>
+          Remove Player
+        </RoomButton>
       </ButtonsPanel>
       <PlayersPanel>
         {players.map((player) => (

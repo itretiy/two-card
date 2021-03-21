@@ -29,6 +29,8 @@ class GameService {
   }
 
   addPlayer() {
+    if (this.room.players.length === 7) return;
+
     return this.mapPlayer(this.room.addPlayer());
   }
 
@@ -50,7 +52,7 @@ class GameService {
         ({ pairsCount: pairsCountA }, { pairsCount: pairsCountB }) => pairsCountB - pairsCountA,
       );
 
-    return ranks[0].pairsCount !== 0 && ranks[0].pairsCount !== ranks[1].pairsCount
+    return ranks[0]?.pairsCount !== 0 && ranks[0]?.pairsCount !== ranks[1]?.pairsCount
       ? this.mapPlayer(ranks[0].player)
       : undefined;
   }

@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { RootDispatch, useTypedSelector } from 'store';
+import environment from 'config/environment';
 import { playNewGame, addPlayer, removePlayer } from 'features/room/roomSlice';
 import Room from './Room';
 
@@ -31,7 +32,9 @@ export default function RoomContainer() {
       players={players}
       winner={winner}
       onDeal={handleDeal}
+      canAdd={players.length < environment.maxPlayers}
       onAddPlayer={handleAddPlayer}
+      canRemove={players.length > environment.minPlayers}
       onRemovePlayer={handleRemovePlayer}
     />
   );

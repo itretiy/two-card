@@ -1,11 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
-// TODO use colors from theme
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: #308b5a;
-    color: #fef72c;
-    font-family: Helvetica, sans-serif;
+    background-color: ${(props) => props.theme.backgroundColor};
+    color: ${(props) => props.theme.color};
+    font-family: ${(props) => props.theme.fontFamily};
     margin: 1em 2em;
   }
 `;
