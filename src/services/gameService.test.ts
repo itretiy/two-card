@@ -1,8 +1,7 @@
 import gameService from './gameService';
 
-// TODO WIP
 describe('gameService', () => {
-  describe('createRoom', () => {
+  describe('.createRoom', () => {
     it('should create new room with 2 players', () => {
       const room = gameService.createRoom();
 
@@ -27,7 +26,7 @@ describe('gameService', () => {
     });
   });
 
-  describe('deal', () => {
+  describe('.deal', () => {
     it('should draw 7 cards for each player', () => {
       gameService.createRoom();
       const [playerOne, playerTwo] = gameService.deal();

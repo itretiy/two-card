@@ -2,7 +2,6 @@ import Chance from 'chance';
 import { nanoid } from 'nanoid';
 
 import Deck from './Deck';
-// import Card from './Card';
 import Player from './Player';
 
 const chance = new Chance();
