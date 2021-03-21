@@ -1,6 +1,6 @@
 import Deck from './Deck';
 
-// TODO draft
+// TODO WIP
 describe('Deck', () => {
   it('should be standard 52-card Deck', () => {
     const deck = new Deck();

@@ -1,6 +1,6 @@
 import Card, { Suit, Rank } from './Card';
 
-// TODO draft
+// TODO WIP
 describe('Card', () => {
   it('should have suit and rank field', () => {
     const card = new Card(Suit.Clubs, Rank.Ace);

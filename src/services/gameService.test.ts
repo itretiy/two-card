@@ -1,18 +1,39 @@
-import * as gameService from './gameService';
+import gameService from './gameService';
 
+// TODO WIP
 describe('gameService', () => {
-  it('should create new game with new full standard deck', () => {
-    const game = gameService.createGame();
+  describe('createRoom', () => {
+    it('should create new room with 2 players', () => {
+      const room = gameService.createRoom();
 
-    expect(game.name).toBeDefined();
-    expect(game.deck).toBeDefined();
-    expect(game.deck.cards).toHaveLength(52);
+      expect(room.id).toBeDefined();
+      expect(room.name).toBeDefined();
+      expect(room.players).toHaveLength(2);
+    });
+
+    it('should every time create a new room', () => {
+      const roomA = gameService.createRoom();
+      const roomB = gameService.createRoom();
+
+      expect(roomA.id).not.toEqual(roomB.id);
+    });
+
+    it('should create new room players without cards', () => {
+      const room = gameService.createRoom();
+
+      room.players.forEach((player) => {
+        expect(player.cards).toHaveLength(0);
+      });
+    });
   });
 
-  it('should create new player with no cards', () => {
-    const player = gameService.createPlayer();
+  describe('deal', () => {
+    it('should draw 7 cards for each player', () => {
+      gameService.createRoom();
+      const [playerOne, playerTwo] = gameService.deal();
 
-    expect(player.name).toBeDefined();
-    expect(player.cards).toHaveLength(0);
+      expect(playerOne.cards).toHaveLength(7);
+      expect(playerTwo.cards).toHaveLength(7);
+    });
   });
 });
