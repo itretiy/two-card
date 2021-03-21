@@ -61,11 +61,17 @@ export default function Game({
         <RoomInfo>Room: {name}</RoomInfo>
       </RoomHeader>
       <Buttons>
-        <RoomButton onClick={onDeal}>Deal cards</RoomButton>
-        <RoomButton onClick={onAddPlayer} disabled={!canAdd}>
+        <RoomButton onClick={onDeal} data-testid="button.deal">
+          Deal cards
+        </RoomButton>
+        <RoomButton onClick={onAddPlayer} disabled={!canAdd} data-testid="button.addPlayer">
           Add Player
         </RoomButton>
-        <RoomButton onClick={onRemovePlayer} disabled={!canRemove}>
+        <RoomButton
+          onClick={onRemovePlayer}
+          disabled={!canRemove}
+          data-testid="button.removePlayer"
+        >
           Remove Player
         </RoomButton>
       </Buttons>

@@ -1,6 +1,8 @@
 import gameService from './gameService';
 import Room from 'models/Room';
 import Deck from 'models/Deck';
+import Player from 'models/Player';
+import Card, { Suit, Rank } from 'models/Card';
 
 describe('gameService', () => {
   describe('.createRoom', () => {
@@ -55,5 +57,51 @@ describe('gameService', () => {
     });
   });
 
-  // TODO test for .winner .addPlayer .getPlayer
+  describe('.winner', () => {
+    it('should not return winner if no one has pair', () => {
+      const getPlayersSpy = jest.spyOn(Room.prototype, 'players', 'get');
+      const playerA = new Player();
+      playerA.cards.push(new Card(Suit.Clubs, Rank.Two), new Card(Suit.Clubs, Rank.Three));
+      const playerB = new Player();
+      playerB.cards.push(new Card(Suit.Clubs, Rank.Four), new Card(Suit.Clubs, Rank.Five));
+      getPlayersSpy.mockReturnValue([playerA, playerB]);
+
+      const winner = gameService.getWinner();
+
+      expect(winner).toBeUndefined();
+
+      getPlayersSpy.mockRestore();
+    });
+
+    it('should not return winner if both have equal pairs count', () => {
+      const getPlayersSpy = jest.spyOn(Room.prototype, 'players', 'get');
+      const playerA = new Player();
+      playerA.cards.push(new Card(Suit.Clubs, Rank.Two), new Card(Suit.Diamonds, Rank.Two));
+      const playerB = new Player();
+      playerB.cards.push(new Card(Suit.Hearts, Rank.Two), new Card(Suit.Spades, Rank.Two));
+      getPlayersSpy.mockReturnValue([playerA, playerB]);
+
+      const winner = gameService.getWinner();
+
+      expect(winner).toBeUndefined();
+
+      getPlayersSpy.mockRestore();
+    });
+
+    it('should return winner if one has more pairs', () => {
+      const getPlayersSpy = jest.spyOn(Room.prototype, 'players', 'get');
+      const playerA = new Player();
+      playerA.cards.push(new Card(Suit.Clubs, Rank.Two), new Card(Suit.Diamonds, Rank.Two));
+      const playerB = new Player();
+      playerB.cards.push(new Card(Suit.Hearts, Rank.Two), new Card(Suit.Spades, Rank.Three));
+      getPlayersSpy.mockReturnValue([playerA, playerB]);
+
+      const winner = gameService.getWinner();
+
+      expect(winner).not.toBeUndefined();
+      expect(winner?.id).toEqual(playerA.id);
+
+      getPlayersSpy.mockRestore();
+    });
+  });
 });

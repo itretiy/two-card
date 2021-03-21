@@ -26,7 +26,7 @@ export interface PlayerProps {
 
 export default function Player({ name, cards = [], isWinner = false }: PlayerProps) {
   return (
-    <PlayerStyled isWinner={isWinner}>
+    <PlayerStyled isWinner={isWinner} data-testid="player">
       <PlayerInfo>Player: {name}</PlayerInfo>
       <div>
         {!cards.length && [...Array<undefined>(7)].map((_, index) => <CardBackSide key={index} />)}
