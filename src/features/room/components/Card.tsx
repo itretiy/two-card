@@ -22,7 +22,7 @@ export interface RoomProps {
 export default function Card({ suit, rank, hasPair = false }: RoomProps) {
   const getBorderColor = () => {
     const mapping: { [key: string]: string } = {
-      '2': 'redb',
+      '2': 'red',
       '3': 'orange',
       '4': 'yellow',
       '5': 'blue',

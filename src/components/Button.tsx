@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 
+// common styles can be moved to the theme but skipped this part as it's just routine
 const ButtonStyled = styled.button`
   background-color: #4b1124;
   border: 4px double #cfb338;

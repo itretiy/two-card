@@ -25,7 +25,7 @@ it(`should show winner as None in history if room hasn't winner`, () => {
   expect(findByText('None')).toBeTruthy();
 });
 
-it(`should show winner name in history if room hasn winner`, () => {
+it(`should show winner name in history if room has winner`, () => {
   const { findByText } = mount({
     games: [{ roomId: 'roomId', roomName: 'roomName', winner: { name: 'player' } }],
   });
