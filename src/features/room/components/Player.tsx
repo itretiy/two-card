@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Card from './Card';
-import CardBackSide from './CardBackSide';
+import EmptyCard from './EmptyCard';
 
 const PlayerStyled = styled.div<{ isWinner: boolean }>`
   display: flex;
@@ -14,6 +14,7 @@ const PlayerStyled = styled.div<{ isWinner: boolean }>`
   border: ${(props) => (props.isWinner ? '4px solid' : 'none')};
 `;
 
+// common styles can be moved to the theme but skipped this part as it's just routine
 const PlayerInfo = styled.div`
   margin-bottom: 1em;
   text-shadow: 1px 2px #444;
@@ -29,7 +30,7 @@ export default function Player({ name, cards = [], isWinner = false }: PlayerPro
     <PlayerStyled isWinner={isWinner} data-testid="player">
       <PlayerInfo>Player: {name}</PlayerInfo>
       <div>
-        {!cards.length && [...Array<undefined>(7)].map((_, index) => <CardBackSide key={index} />)}
+        {!cards.length && [...Array<undefined>(7)].map((_, index) => <EmptyCard key={index} />)}
         {cards.map((card) => (
           <Card
             suit={card.suit}

@@ -23,6 +23,7 @@ const RoomButton = styled(Button)`
   margin-right: 1em;
 `;
 
+// common styles can be moved to the theme but skipped this part as it's just routine
 const RoomInfo = styled.div`
   font-size: 24px;
   text-shadow: 1px 2px #444;
@@ -62,7 +63,7 @@ export default function Game({
       </RoomHeader>
       <Buttons>
         <RoomButton onClick={onDeal} data-testid="button.deal">
-          Deal cards
+          Deal Cards
         </RoomButton>
         <RoomButton onClick={onAddPlayer} disabled={!canAdd} data-testid="button.addPlayer">
           Add Player
