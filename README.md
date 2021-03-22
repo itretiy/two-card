@@ -6,7 +6,7 @@
 
 ## Implementation notes
 
-<p>The original task could have been implemented with a plain react with a few components using local state and a few model/service files but I've intentionally chosen more close to a real-word approach and structure:</p>
+The original task could have been implemented with a plain react with a few components using local state and a few model/service files but I've intentionally chosen more close to a real-word approach and structure:
 
 - `components` holds common presentational components
 - `config` contains common configuration
@@ -14,6 +14,10 @@
 - `services` in real-world would contain async api services, but in our case gameService is used to mimic that communication (Note that for simplicity reasons gameService does not return promises)
 - `models` is probably the only major exception to the rules of the common redux app structure: we need them since we don't have any server-side communication and thus some stateful logic is placed there
 - `store` and the rest are usual redux app structure folders
+
+## Testing notes
+
+Tried to covered by tests as much as I could but due to time limitations didn't pay too much attention to testing details so please don't be too strict:)
 
 ## Tech stack
 
