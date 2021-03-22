@@ -24,7 +24,7 @@ Tried to covered by tests as much as I could but due to time limitations didn't 
 - **Typescript** intentionally didn't rewrite the entire repo with create-react-app typescript template, but instead manually added TS and had to update outdated deps to fix some issues
 - **React / Redux** as mentioned above to be close to the real-world example
 - **@reduxjs/toolkit** usually I go with a manual react / redux store/middleware setup plus typesafe-actions if TS is used but here it chosen for simplicity reasons to speed up development
-- **lodash.shuffle** is used to shuffle the deck on each deal, under the hood Fisher-Yates algorithm with O(n log n) complexity is used (see https://lodash.com/docs/4.17.15#shuffle)
+- **lodash.shuffle** is used to shuffle the deck on each deal, under the hood Fisher-Yates algorithm with O(n) complexity is used (see https://lodash.com/docs/4.17.15#shuffle)
 - **styled-components** is used with the configured theme (see `config/theme`) and previously existed styles with minor adjustments only, also please note that svg card images are hosted from the exteternal CDN as were provided in the helpers
 - **eslint / prettier** are configured and automatically run on a pre-commit hook on staged files
 
