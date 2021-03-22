@@ -3,6 +3,10 @@ import PlayerModel from 'models/Player';
 import RoomModel from 'models/Room';
 import { hasPair, getPairsCount } from './gameService.utils';
 
+/**
+ * For simplicity reasons service methods do not return promises
+ * as it would be in a real-world exmaple with http calls
+ */
 class GameService {
   private room = new RoomModel();
 
@@ -33,6 +37,13 @@ class GameService {
     return this.mapPlayer(removedPlayer);
   }
 
+  /**
+   * The idea here is to sort players by the number of pairs they have in descending forder
+   * then simply take the first item which represents the player with the most pairs
+   * and check if pairs is not 0 - that means no one has pairs
+   * and check if next player doesn't have same number of pairs - that means no single winner
+   * @returns Player | undefined
+   */
   getWinner() {
     const { players } = this.room;
     const sortedByRankDesc = players
@@ -50,6 +61,10 @@ class GameService {
       : undefined;
   }
 
+  /**
+   * mapXXX transfom model's classes instances into plain objects in order to avoid warning from serializability middleware
+   * nonetheless, it'd be easier to suppress that middleware checks but it's not the best choice
+   */
   private mapCards(cards: CardModel[] = []): Card[] {
     return cards.map((card) => ({
       suit: card.suit,

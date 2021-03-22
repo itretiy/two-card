@@ -6,13 +6,12 @@ import PlayerModel from 'models/Player';
 import RoomModel from 'models/Room';
 
 declare global {
-  // redux types
+  // common react-redux types
   type RootState = ReturnType<typeof store.getState>;
   type RootDispatch = typeof store.dispatch;
-
   type RootTypedUseSelectorHook = TypedUseSelectorHook<RootState>;
 
-  // app types
+  // common app types
   type Card = Pick<CardModel, 'suit' | 'rank'> & {
     hasPair?: boolean;
   };

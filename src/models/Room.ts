@@ -6,9 +6,12 @@ import Player from './Player';
 
 const chance = new Chance();
 
-// NOTE: players are stateful
+// This is the only state we need to keep across games
 let players = [new Player(), new Player()];
 
+/**
+ * Room model is stateful in order to mimic data from external resource
+ */
 export default class Room {
   public readonly id: string;
   public readonly name: string;

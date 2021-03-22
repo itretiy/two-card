@@ -40,6 +40,10 @@ const { reducer, actions } = createSlice({
 
 export const { createRoom, setWinner, setPlayers, pushPlayer, popPlayer } = actions;
 
+/**
+ * in a real-world app it would be async action creator and we'll need to handle
+ * playNewGame.(fulfilled|rejected) but here for simplicity reasons we're not dealing with promises
+ */
 export const playNewGame = () => (dispatch: RootDispatch) => {
   const room = gameService.createRoom();
   dispatch(createRoom(room));

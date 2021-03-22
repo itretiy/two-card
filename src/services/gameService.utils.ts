@@ -8,6 +8,18 @@ export const hasPair = (card: Card, cards: Card[]) => {
 
 export const getPairsCount = (cards: Card[] = []) => getPairs(cards).length;
 
+/**
+ * The idea here is to sort cards by rank so that all the same rank cards be close
+ * and then take by 2 items from arrays head in a loop until it's not empty
+ * if they are equal then save pair and proceed
+ * if they are not equal put the 2-nd item back to the head and proceed
+ *
+ * Initial solution used building frequency map which was faster and took O(n)
+ * but the current one is more readable especially taking into account that cards is a small array
+ *
+ * @param Cards[]
+ * @returns array of pair tuples
+ */
 export const getPairs = (cards: Card[] = []): [Card, Card][] => {
   const pairs: [Card, Card][] = [];
 
